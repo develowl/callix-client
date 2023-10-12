@@ -14,7 +14,7 @@ export default function HomePage({
   upcomingLaunches,
   pastLaunches,
 }: NextLaunchProps & LatestLaunchProps & UpcomingLaunchProps & PastLaunchProps) {
-  const variant = useGoogleOptimize('dnw7Su3cRt2ISTGpfAEd4w', [true, false]);
+  const variant = useGoogleOptimize(process.env.NEXT_PUBLIC_EXPERIMENT_ID!, [true, false]);
   return (
     <>
       {!!variant && <WelcomeBackground />}
