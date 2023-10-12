@@ -5,14 +5,14 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { theme } from '../theme';
 
-import Hotjar from '@hotjar/browser';
-
-const siteId = 3691836;
-const hotjarVersion = 6;
-
-Hotjar.init(siteId, hotjarVersion);
+import { useEffect } from 'react';
+import { hotjar } from 'react-hotjar';
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    hotjar.initialize(3691836, 1);
+  }, []);
+
   return (
     <MantineProvider defaultColorScheme={'dark'} theme={theme}>
       <Head>
