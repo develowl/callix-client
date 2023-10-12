@@ -1,40 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 style="font-size: 40px; text-align: center;">Launches - Callix Client</h1>
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js installed
+- Npm or yarn installed
+- Google Analytics account
+- Google Optimize account
+- Hotjar account
+
+#### 1. First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+#### 2. Set environments properly in an `.env` file:
+
+```sh
+# .env.example
+NEXT_PUBLIC_LAUNCHES_API=http://localhost:3333
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-A1B2C3D4E5
+NEXT_PUBLIC_EXPERIMENT_ID=CNouaoqw91UASvGoKI9Ast
+NEXT_PUBLIC_OPTIMIZE_ID=OPT-ADGKM0S
+```
+
+#### 3. Then, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+
+#### 4. And finally:
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Implementation
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+This project was created using the [Next.js](https://nextjs.org/docs) framework, a modern architecture for web development. For componentization and styling, the [Mantine.dev](https://mantine.dev/getting-started/) was used. [Jest](https://jestjs.io/docs/getting-started) was used for carry out tests, [Husky](https://typicode.github.io/husky/) was used to guarantee the integrity of all commits, in addition to integrations with [Google Analytics](https://analytics.google.com), [Google Optimize](https://optimize.google.com/) and [HotJar](https://www.hotjar.com). Finally, a [CI/CD pipeline](https://github.com/develowl/callix-client/actions) was created using a yaml configuration file, with GitHub workflow managing that process, and the deployment was made with [Docker](https://docker.com) and to top it off, the application was hosted in [Heroku](https://heroku.com), so it can be found at this address [Callix Client - Launches](https://callix-client-f98a40c71d17.herokuapp.com/).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## License
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT license - see the LICENSE file for details.
