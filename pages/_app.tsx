@@ -3,7 +3,6 @@ import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Script from 'next/script';
 import { theme } from '../theme';
 
 import { GoogleAnalytics } from 'nextjs-google-analytics';
@@ -19,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     hotjar.initialize(3691836, 1);
     TagManager.initialize(tagManagerArgs);
-  }, []);
+  });
 
   return (
     <MantineProvider defaultColorScheme={'dark'} theme={theme}>
@@ -30,13 +29,13 @@ export default function App({ Component, pageProps }: AppProps) {
           content={'minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no'}
         />
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
-        <Script
+        <script
           src={`https://www.googleoptimize.com/optimize.js?id=${process.env.NEXT_PUBLIC_OPTIMIZE_ID}`}
-        />
-        <Script
+        ></script>
+        <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-        />
+        ></script>
       </Head>
       <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       <Component {...pageProps} />
