@@ -11,7 +11,7 @@ import { hotjar } from 'react-hotjar';
 
 import TagManager from 'react-gtm-module';
 const tagManagerArgs = {
-  gtmId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!,
+  gtmId: 'G-L8DD49XY3N',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -29,16 +29,10 @@ export default function App({ Component, pageProps }: AppProps) {
           content={'minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no'}
         />
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
-        <script
-          async
-          src={`https://www.googleoptimize.com/optimize.js?id=${process.env.NEXT_PUBLIC_OPTIMIZE_ID}`}
-        ></script>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-        ></script>
+        <script async src={'https://www.googleoptimize.com/optimize.js?id=OPT-MVFFR7Z'}></script>
+        <script async src={'https://www.googletagmanager.com/gtag/js?id=G-L8DD49XY3N'}></script>
       </Head>
-      <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      <GoogleAnalytics trackPageViews gaMeasurementId={'G-L8DD49XY3N'} />
       <Component {...pageProps} />
     </MantineProvider>
   );
