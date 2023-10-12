@@ -1,4 +1,5 @@
-import { ActionIcon, Button, Flex } from '@mantine/core';
+import { ActionIcon, Button, Flex, useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import {
   IconBrandReddit,
   IconBrandWikipedia,
@@ -13,10 +14,16 @@ export type ButtonGroupProps = {
 };
 
 export function ButtonGroup({ launch, hasReadMore }: ButtonGroupProps) {
+  const theme = useMantineTheme();
+  const matches = useMediaQuery(`(max-width: ${theme.breakpoints.md})`, false, {
+    getInitialValueInEffect: false,
+  });
+
   return (
     <Flex align={'center'} justify={'space-between'}>
       {!!hasReadMore && (
         <Button
+          size={!matches ? 'sm' : 'xs'}
           variant={'outline'}
           radius={'xs'}
           component={'a'}
