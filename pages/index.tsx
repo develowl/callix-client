@@ -1,4 +1,5 @@
 import { Divider } from '@mantine/core';
+import useGoogleOptimize from '@react-hook/google-optimize';
 import { getLatestLaunch, getNextLaunch, getPastLaunches, getUpcomingLaunches } from '../src/api';
 import { LatestLaunch, LatestLaunchProps } from '../src/components/LatestLaunch';
 import { NextLaunch, NextLaunchProps } from '../src/components/NextLaunch';
@@ -13,9 +14,10 @@ export default function HomePage({
   upcomingLaunches,
   pastLaunches,
 }: NextLaunchProps & LatestLaunchProps & UpcomingLaunchProps & PastLaunchProps) {
+  const variant = useGoogleOptimize(process.env.NEXT_PUBLIC_EXPERIMENT_ID!, [true, false]);
   return (
     <>
-      <WelcomeBackground />
+      {!!variant && <WelcomeBackground />}
       <Welcome />
       <Divider mt={100} size={'md'} />
       <NextLaunch nextLaunch={nextLaunch} />

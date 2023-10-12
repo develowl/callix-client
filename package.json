@@ -20,6 +20,7 @@
     "@mantine/core": "^7.1.2",
     "@mantine/hooks": "^7.1.2",
     "@next/bundle-analyzer": "^13.5.3",
+    "@react-hook/google-optimize": "^1.2.1",
     "@tabler/icons-react": "^2.20.0",
     "@tanstack/react-query": "^4.36.1",
     "embla-carousel-react": "^7.0.0",
