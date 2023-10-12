@@ -31,11 +31,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
         <script
           async
-          src={'https://www.googleoptimize.com/optimize.js?id=%NEXT_PUBLIC_OPTIMIZE_ID%'}
+          src={`https://www.googleoptimize.com/optimize.js?id=${process.env.NEXT_PUBLIC_OPTIMIZE_ID}`}
         ></script>
         <script
           async
-          src={'https://www.googletagmanager.com/gtag/js?id=%NEXT_PUBLIC_GA_MEASUREMENT_ID%'}
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
         ></script>
       </Head>
       <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
