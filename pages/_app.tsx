@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     hotjar.initialize(3691836, 1);
     TagManager.initialize(tagManagerArgs);
-  });
+  }, []);
 
   return (
     <MantineProvider defaultColorScheme={'dark'} theme={theme}>
