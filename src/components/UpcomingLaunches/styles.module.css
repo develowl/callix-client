@@ -1,0 +1,15 @@
+.background {
+  background: linear-gradient(to right, transparent, rgba(116, 139, 117, 0.1), transparent);
+}
+
+.control {
+  &[data-inactive] {
+    opacity: 0;
+    cursor: default;
+  }
+}
+
+.control {
+  background-color: var(--mantine-color-dark-9);
+  border-radius: var(--mantine-radius-md);
+}
