@@ -9,6 +9,12 @@ import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 
+import TagManager from 'react-gtm-module';
+const tagManagerArgs = {
+  gtmId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!,
+};
+TagManager.initialize(tagManagerArgs);
+
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     hotjar.initialize(3691836, 1);
