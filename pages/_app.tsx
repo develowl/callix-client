@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { theme } from '../theme';
 
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
       </Head>
+      <GoogleAnalytics trackPageViews />
       <Component {...pageProps} />
     </MantineProvider>
   );
