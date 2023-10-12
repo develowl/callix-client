@@ -1,5 +1,17 @@
 import { Carousel } from '@mantine/carousel';
-import { Box, Container, Flex, Grid, Image, Skeleton, Space, Text, Title } from '@mantine/core';
+import {
+  Box,
+  Container,
+  Flex,
+  Grid,
+  Image,
+  Skeleton,
+  Space,
+  Text,
+  Title,
+  useMantineTheme,
+} from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { IconCalendar, IconChecks, IconRocket, IconX } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import wiki from 'wikijs';
@@ -14,6 +26,10 @@ export type LatestLaunchProps = {
 
 export function LatestLaunch({ latestLaunch }: LatestLaunchProps) {
   const [content, setContent] = useState<string | null>(latestLaunch.details);
+  const theme = useMantineTheme();
+  const matches = useMediaQuery(`(max-width: ${theme.breakpoints.md})`, false, {
+    getInitialValueInEffect: false,
+  });
 
   useEffect(() => {
     if (!content) {
@@ -31,43 +47,49 @@ export function LatestLaunch({ latestLaunch }: LatestLaunchProps) {
   return (
     <Box className={classes.background}>
       <Container py={50}>
-        <Text c={'dark.3'} size={'xl'} fw={'bold'}>
+        <Text c={'dark.3'} size={!matches ? 'xl' : 'xs'} fw={'bold'}>
           Latest launch
         </Text>
-        <Space h={'xl'} />
-        <Flex gap={16} align={'center'}>
-          <Title size={'h1'}> Mission: {latestLaunch.name}</Title>
-          <Image w={32} src={'https://images2.imgbox.com/eb/d8/D1Yywp0w_o.png'} />
+        <Space h={!matches ? 'xl' : 'md'} />
+        <Flex gap={!matches ? 16 : 8} align={'center'}>
+          <Title size={!matches ? 'h1' : 'h4'}> Mission: {latestLaunch.name}</Title>
+          <Image w={!matches ? 32 : 24} src={'https://images2.imgbox.com/eb/d8/D1Yywp0w_o.png'} />
         </Flex>
-        <Text size={'lg'}>Flight number: {latestLaunch.flight_number}</Text>
-        <Space h={50} />
-        <Grid grow={true} gutter={64} align={'stretch'}>
-          <Grid.Col span={3}>
-            <Flex justify={'space-between'}>
+        <Text size={!matches ? 'lg' : 'sm'}>Flight number: {latestLaunch.flight_number}</Text>
+        <Space h={!matches ? 50 : 25} />
+        <Grid grow={true} gutter={!matches ? 64 : 32} align={'stretch'}>
+          <Grid.Col span={{ base: 12, sm: 5, lg: 3 }}>
+            <Flex justify={'space-around'}>
               <Flex direction={'column'} align={'center'} gap={'sm'}>
-                <IconCalendar size={48} stroke={1.5} />
-                <Text size={'sm'}>
+                <IconCalendar size={!matches ? 48 : 36} stroke={!matches ? 1.5 : 1} />
+                <Text size={!matches ? 'sm' : 'xs'}>
                   {new Date(latestLaunch.date_local).toLocaleDateString('pt-br')}
                 </Text>
               </Flex>
               <Flex direction={'column'} align={'center'} gap={'sm'}>
-                <IconRocket size={48} stroke={1.5} />
-                <Text size={'sm'}>{latestLaunch.rocket.name}</Text>
+                <IconRocket size={!matches ? 48 : 36} stroke={!matches ? 1.5 : 1} />
+                <Text size={!matches ? 'sm' : 'xs'}>{latestLaunch.rocket.name}</Text>
               </Flex>
             </Flex>
             <Space h={'xl'} />
-            <Flex justify={'space-between'}>
+            <Flex justify={'space-around'}>
               <Flex direction={'column'} align={'center'} gap={'sm'}>
                 {!latestLaunch.success ? (
-                  <IconX color={'red'} size={48} stroke={1.5} />
+                  <IconX color={'red'} size={!matches ? 48 : 36} stroke={!matches ? 1.5 : 1} />
                 ) : (
-                  <IconChecks color={'green'} size={48} stroke={1.5} />
+                  <IconChecks
+                    color={'green'}
+                    size={!matches ? 48 : 36}
+                    stroke={!matches ? 1.5 : 1}
+                  />
                 )}
-                <Text size={'sm'}>Missson {!latestLaunch.success ? 'failed' : 'succeed'}</Text>
+                <Text size={!matches ? 'sm' : 'xs'}>
+                  Missson {!latestLaunch.success ? 'failed' : 'succeed'}
+                </Text>
               </Flex>
               <Flex direction={'column'} align={'center'} gap={'sm'}>
-                <Text size={'48px'}>{latestLaunch.crew.length}</Text>
-                <Text size={'sm'}>Crew size</Text>
+                <Text size={!matches ? '48px' : '36px'}>{latestLaunch.crew.length}</Text>
+                <Text size={!matches ? 'sm' : 'xs'}>Crew size</Text>
               </Flex>
             </Flex>
             <Space h={48} />
@@ -83,23 +105,26 @@ export function LatestLaunch({ latestLaunch }: LatestLaunchProps) {
               ))}
             </Flex>
           </Grid.Col>
-          <Grid.Col span={4}>
-            <Title size={'h2'} mb={20}>
+          <Grid.Col span={{ base: 12, sm: 7, md: 4 }}>
+            <Title size={!matches ? 'h2' : 'h4'} mb={20}>
               Summary
             </Title>
             <Skeleton visible={!content} h={!content ? 400 : 'fit-content'}>
-              <Text ta={'justify'}>{content}</Text>
+              <Text size={!matches ? 'md' : 'sm'} ta={'justify'}>
+                {content}
+              </Text>
             </Skeleton>
             <Space h={'md'} />
             <ButtonGroup launch={latestLaunch} hasReadMore />
           </Grid.Col>
-          <Grid.Col span={4}>
+          <Grid.Col span={{ base: 12, sm: 5, md: 4 }}>
             <Carousel
               h={'100%'}
               height={'100%'}
               className={classes.carousel}
               classNames={classes}
               loop
+              align={!matches ? 'center' : 'start'}
             >
               <Carousel.Slide>
                 <Image
