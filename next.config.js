@@ -7,9 +7,6 @@ module.exports = withBundleAnalyzer({
   eslint: {
     ignoreDuringBuilds: true,
   },
-  serverRuntimeConfig: {
-    NEXT_PUBLIC_LAUNCHES_API: process.env.NEXT_PUBLIC_LAUNCHES_API,
-  },
   publicRuntimeConfig: {
     NEXT_PUBLIC_LAUNCHES_API: process.env.NEXT_PUBLIC_LAUNCHES_API,
     NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,

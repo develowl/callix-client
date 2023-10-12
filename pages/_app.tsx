@@ -5,13 +5,16 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { theme } from '../theme';
 
+import getConfig from 'next/config';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 
+const { publicRuntimeConfig } = getConfig();
+
 import TagManager from 'react-gtm-module';
 const tagManagerArgs = {
-  gtmId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!,
+  gtmId: publicRuntimeConfig.NEXT_PUBLIC_GA_MEASUREMENT_ID!,
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -31,14 +34,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
         <script
           async
-          src={`https://www.googleoptimize.com/optimize.js?id=${process.env.NEXT_PUBLIC_OPTIMIZE_ID}`}
+          src={`https://www.googleoptimize.com/optimize.js?id=${publicRuntimeConfig.NEXT_PUBLIC_OPTIMIZE_ID}`}
         ></script>
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${publicRuntimeConfig.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
         ></script>
       </Head>
-      <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      <GoogleAnalytics
+        trackPageViews
+        gaMeasurementId={publicRuntimeConfig.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+      />
       <Component {...pageProps} />
     </MantineProvider>
   );
