@@ -30,7 +30,6 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
         <script async src={'https://www.googleoptimize.com/optimize.js?id=OPT-MVFFR7Z'}></script>
-        <script async src={'https://www.googletagmanager.com/gtag/js?id=G-L8DD49XY3N'}></script>
       </Head>
       <GoogleAnalytics trackPageViews gaMeasurementId={'G-L8DD49XY3N'} />
       <Component {...pageProps} />
