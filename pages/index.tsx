@@ -17,7 +17,7 @@ export default function HomePage({
   const variant = useGoogleOptimize(process.env.NEXT_PUBLIC_EXPERIMENT_ID!, [true, false]);
   return (
     <>
-      {!!variant && <WelcomeBackground />}
+      {!variant && <WelcomeBackground />}
       <Welcome />
       <Divider mt={100} size={'md'} />
       <NextLaunch nextLaunch={nextLaunch} />
