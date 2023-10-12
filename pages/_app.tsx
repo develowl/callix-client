@@ -23,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content={'minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no'}
         />
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
+        <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MVFFR7Z"></script>
       </Head>
       <GoogleAnalytics trackPageViews />
       <Component {...pageProps} />
