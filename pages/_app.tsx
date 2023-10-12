@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel={'shortcut icon'} href={'/favicon.ico'} />
         <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MVFFR7Z"></script>
       </Head>
-      <GoogleAnalytics trackPageViews />
+      <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       <Component {...pageProps} />
     </MantineProvider>
   );
