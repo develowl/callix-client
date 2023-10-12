@@ -1,0 +1,13 @@
+.background {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)),
+    url('https://images2.imgbox.com/33/2e/k6VE4iYl_o.png') no-repeat center 50%;
+}
+
+.carousel {
+  border-radius: var(--mantine-radius-md);
+}
+
+.control {
+  background-color: var(--mantine-color-dark-9);
+  border-radius: var(--mantine-radius-md);
+}
