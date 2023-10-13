@@ -1,4 +1,4 @@
-import { Flex, Image, Text, useMantineTheme } from '@mantine/core';
+import { Box, Flex, Image, Text, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 export type CrewProps = {
@@ -20,8 +20,10 @@ export function Crew({ name, role, agency, image }: CrewProps) {
   }
 
   return (
-    <Flex direction={'column'} align={'center'} gap={'sm'}>
-      <Image fit={'contain'} h={!matches ? 175 : 125} radius={'sm'} src={image} />
+    <Flex direction={'column'} align={'center'} gap={'sm'} w={'100%'}>
+      <Box h={!matches ? 100 : 110}>
+        <Image h={'100%'} radius={'sm'} src={image} />
+      </Box>
       <Flex direction={'column'} align={'center'}>
         <Text size={!matches ? 'sm' : 'xs'} fw={'bold'} mb={10}>
           {formatName()}

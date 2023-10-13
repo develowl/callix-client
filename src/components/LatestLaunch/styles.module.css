@@ -1,6 +1,11 @@
 .background {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)),
     url('https://images2.imgbox.com/33/2e/k6VE4iYl_o.png') no-repeat center 50%;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+      url('https://images2.imgbox.com/33/2e/k6VE4iYl_o.png') no-repeat center 50%;
+  }
 }
 
 .carousel {

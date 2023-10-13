@@ -93,7 +93,7 @@ export function LatestLaunch({ latestLaunch }: LatestLaunchProps) {
               </Flex>
             </Flex>
             <Space h={48} />
-            <Flex justify={'space-between'} gap={10} ta={'center'}>
+            <Flex align={'stretch'} justify={'space-between'} gap={5} ta={'center'}>
               {latestLaunch.crew.map(({ crew, role }) => (
                 <Crew
                   key={crew.name}

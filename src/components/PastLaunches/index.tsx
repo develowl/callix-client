@@ -1,4 +1,16 @@
-import { Box, Card, Container, Flex, Grid, Image, Loader, Space, Text } from '@mantine/core';
+import {
+  Box,
+  Card,
+  Container,
+  Flex,
+  Grid,
+  Image,
+  Loader,
+  Space,
+  Text,
+  useMantineTheme,
+} from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { getPastLaunches } from '../../api';
@@ -14,6 +26,11 @@ export type PastLaunchProps = {
 };
 
 export function PastLaunches({ pastLaunches }: PastLaunchProps) {
+  const theme = useMantineTheme();
+  const matches = useMediaQuery(`(max-width: ${theme.breakpoints.md})`, false, {
+    getInitialValueInEffect: false,
+  });
+
   const [launches, setLaunches] = useState<ILaunch[]>([]);
   const [page, setPage] = useState<number>(2);
   const [hasMore, setHasMore] = useState<boolean>(true);
@@ -36,35 +53,49 @@ export function PastLaunches({ pastLaunches }: PastLaunchProps) {
       hasMore={hasMore}
       loader={
         <Flex justify={'center'} p={10}>
-          <Loader type={'dots'} color={'teal.9'} />
+          <Loader type={'dots'} color={'blue.9'} />
         </Flex>
       }
     >
       <Box className={classes.background}>
         <Container py={35}>
-          <Text c={'dark.3'} size={'xl'} fw={'bold'}>
+          <Text c={'dark.3'} size={!matches ? 'xl' : 'xs'} fw={'bold'}>
             Past launches
           </Text>
-          <Space h={48} />
-          <Grid grow justify={'space-around'} align={'stretch'}>
+          <Space h={!matches ? 48 : 24} />
+          <Grid grow justify={!matches ? 'space-around' : 'center'} align={'stretch'}>
             {launches?.map((pastLaunch) => (
-              <Grid.Col span={3} key={pastLaunch.name}>
-                <Card shadow={'sm'} padding={'lg'} radius={'md'} withBorder h={'100%'} mih={200}>
+              <Grid.Col span={{ base: 12, xs: 6, sm: 4, md: 3 }} key={pastLaunch.name}>
+                <Card
+                  shadow={'sm'}
+                  padding={'lg'}
+                  radius={'md'}
+                  withBorder
+                  mih={'15em'}
+                  miw={'15em'}
+                  mah={'20em'}
+                  maw={'20em'}
+                  m={'0 auto'}
+                >
                   <Card.Section>
                     <Image
                       src={pastLaunch.rocket.flickr_images[getRandomIndex(pastLaunch)]}
-                      height={120}
+                      height={160}
                     />
                   </Card.Section>
-                  <Card.Section p={20}>
-                    <Flex justify={'space-between'} align={'center'}>
+                  <Card.Section p={10}>
+                    <Flex direction={'column'} justify={'space-between'} align={'start'}>
                       <Flex gap={10}>
+                        <Text size={!matches ? 'sm' : 'xs'}>{pastLaunch.name}</Text>
                         <Image src={pastLaunch.links.patch.small} h={20} />
-                        <Text size={'sm'} c={'dimmed'}>
-                          {pastLaunch.name}
-                        </Text>
                       </Flex>
-                      <ButtonGroup launch={pastLaunch} />
+                      <Space h={20} />
+                      <Flex align={'center'} justify={'space-between'} w={'100%'}>
+                        <Text size={!matches ? 'xs' : '0.6rem'} c={'dimmed'}>
+                          {new Date(pastLaunch.date_local).toLocaleDateString('pt-br')}
+                        </Text>
+                        <ButtonGroup launch={pastLaunch} />
+                      </Flex>
                     </Flex>
                   </Card.Section>
                 </Card>
