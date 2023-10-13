@@ -10,14 +10,14 @@ export function Welcome() {
           inherit
           variant={'gradient'}
           component={'span'}
-          gradient={{ from: 'gray', to: 'blue' }}
+          gradient={{ from: 'blue.1', to: 'blue.9' }}
         >
           SpaceX{' '}
         </Text>
         launches page
       </Title>
       <Text c={'dimmed'} ta={'center'} size={'xl'} maw={580} mx={'auto'} mt={'xl'}>
-        This page presents all information about{' '}
+        In here you are going to find all information about{' '}
         <Anchor href={'https://www.spacex.com/'} target={'_blank'} size={'lg'}>
           SpaceX
         </Anchor>{' '}

@@ -17,13 +17,13 @@ export function NextLaunch({ nextLaunch }: NextLaunchProps) {
   return (
     <Box className={classes.background}>
       <Container py={35}>
-        <Grid align={'center'} justify={'center'}>
+        <Grid align={'center'}>
           <Grid.Col span={{ base: 3, lg: 2 }}>
             <Text c={'dark.3'} size={!matches ? 'xl' : 'xs'} fw={'bold'}>
               Next launch
             </Text>
           </Grid.Col>
-          <Grid.Col span={{ base: 9, lg: 10 }}>
+          <Grid.Col span={{ base: 12, lg: 10 }}>
             <Flex gap={!matches ? 16 : 12} justify={'space-evenly'} align={'center'}>
               <Flex direction={'column'} align={'center'} gap={!matches ? 'sm' : 5}>
                 <Title size={!matches ? 'h1' : 'h5'} ta={'center'}>
