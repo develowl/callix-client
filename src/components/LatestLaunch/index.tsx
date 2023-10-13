@@ -38,7 +38,7 @@ export function LatestLaunch({ latestLaunch }: LatestLaunchProps) {
   }, [content]);
 
   async function queryWiki() {
-    wiki({ apiUrl: 'https://es.wikipedia.org/w/api.php' })
+    wiki({ apiUrl: 'https://en.wikipedia.org/w/api.php' })
       .page(`SpaceX_${latestLaunch.name}`)
       .then((page) => page)
       .then(async (value) => setContent(await value.summary()));
